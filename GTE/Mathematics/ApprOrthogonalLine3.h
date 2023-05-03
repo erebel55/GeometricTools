@@ -116,7 +116,8 @@ namespace gte
 
         virtual void CopyParameters(ApprQuery<Real, Vector3<Real>> const* input) override
         {
-            auto source = dynamic_cast<ApprOrthogonalLine3<Real> const*>(input);
+            auto source = static_cast<ApprOrthogonalLine3<Real> const*>(input);
+            LogAssert(source != nullptr, "Invalid input.");
             if (source)
             {
                 *this = *source;
